@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignIn / SignUp | Wheel N Deal Car Rentals</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* 🎬 Background Video */
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(70%); /* Darkens video slightly for readability */
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* New wrapper to center content below the fixed header */
+        .page-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 100px 20px 20px 20px; /* Top padding for header space */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+            position: relative;
+            overflow: hidden;
+            width: 768px;
+            max-width: 100%;
+            min-height: 480px;
+        }
+
+        .container p {
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 0.3px;
+            margin: 20px 0;
+        }
+
+        .container span {
+            font-size: 12px;
+            color: #eee;
+        }
+
+        .container a {
+            color: #eee;
+            font-size: 13px;
+            text-decoration: none;
+            margin: 15px 0 10px;
+        }
+
+        .container button {
+            background-color: #fa7304e1;
+            color: #fff;
+            font-size: 12px;
+            padding: 10px 45px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+
+        .container button:active {
+            transform: scale(0.95);
+        }
+
+        .container button.hidden {
+            background-color: transparent;
+            border-color: #fff;
+        }
+
+        .container form {
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            height: 100%;
+        }
+        
+        .container form h1 {
+            color: #fff;
+        }
+
+        .container input {
+            background-color: #eee;
+            border: none;
+            padding: 10px 15px;
+            margin: 8px 0;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .form-container {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            transition: all 0.6s ease-in-out;
+        }
+
+        .sign-in {
+            left: 0;
+            width: 50%;
+            z-index: 2;
+            opacity: 1;
+        }
+        
+        #signInBtn, #signUpBtn {
+            color: #fff; /* Changed to white for better contrast */
+        }
+
+        .container.active .sign-in {
+            transform: translateX(100%);
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .sign-up {
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .container.active .sign-up {
+            transform: translateX(100%);
+            opacity: 1;
+            z-index: 5; /* Ensure sign-up form is on top when active */
+        }
+
+        /* 🎯 Social icons */
+        .social-icons {
+            margin: 20px 0;
+        }
+
+        .social-icons a {
+            border: 1px solid #ccc;
+            border-radius: 20%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 3px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .social-icons a i {
+            color: #fa7104;
+            font-size: 18px;
+        }
+
+        .social-icons a:hover i {
+            color: white;
+        }
+        
+        .toggle-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: all 0.6s ease-in-out;
+            border-radius: 150px 0 0 100px;
+            z-index: 100;
+        }
+
+        .container.active .toggle-container {
+            transform: translateX(-100%);
+            border-radius: 0 150px 100px 0;
+        }
+
+        .toggle {
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.215), #fa7304d3);
+            color: #fff;
+            position: relative;
+            left: -100%;
+            width: 200%;
+            transform: translateX(0);
+            transition: all 0.6s ease-in-out;
+        }
+
+        .container.active .toggle {
+            transform: translateX(50%);
+        }
+
+        .toggle-panel {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 30px;
+            text-align: center;
+            top: 0;
+            transform: translateX(0);
+            transition: all 0.6s ease-in-out;
+        }
+
+        .toggle-left {
+            transform: translateX(-200%);
+        }
+
+        .container.active .toggle-left {
+            transform: translateX(0);
+        }
+
+        .toggle-right {
+            right: 0;
+            transform: translateX(0);
+        }
+
+        .container.active .toggle-right {
+            transform: translateX(200%);
+        }
+
+        /* 🌟 NEW: Mobile Toggle Links - Hidden on Desktop */
+        .mobile-toggle {
+            display: none;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* ---------------------------------------------------- */
+        /* START: ADDED CSS for .menu-icon responsiveness       */
+        /* ---------------------------------------------------- */
+        header {
+            position: fixed; /* Ensures the header stays put */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure the header is on top */
+            background-color: rgb(0, 0, 0); /* Add background for visibility over the video */
+        }
+        
+        .nav-icons {
+            /* Assuming this is a flex container for the logo image and menu icon */
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Style to create the hamburger icon */
+        .menu-icon {
+            width: 30px;
+            height: 30px;
+            display: none; /* Initially hide the menu icon on large screens */
+            flex-direction: column;
+            justify-content: space-around;
+            cursor: pointer;
+            z-index: 200; /* High z-index to be on top of other content */
+            padding: 5px;
+        }
+
+        .menu-icon div {
+            width: 100%;
+            height: 3px;
+            background-color: white; /* White lines to match the image */
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        /* ---------------------------------------------------- */
+        /* END: ADDED CSS for .menu-icon responsiveness         */
+        /* ---------------------------------------------------- */
+
+        /* 📱 Mobile Specific Adjustments */
+        @media screen and (max-width: 767px) {
+            .page-wrapper {
+                padding-top: 120px; /* More padding for smaller screens */
+            }
+            
+            .container {
+                min-height: 500px;
+            }
+
+            .form-container {
+                width: 100%; /* Forms take full width on mobile */
+            }
+
+            .sign-in {
+                left: 0;
+                width: 100%;
+            }
+
+            .sign-up {
+                left: 0;
+                width: 100%;
+            }
+
+            .container.active .sign-in {
+                transform: translateX(-100%); /* Sign-in slides left out of view */
+            }
+
+            .sign-up {
+                transform: translateX(100%); /* Sign-up starts off-screen to the right */
+            }
+
+            .container.active .sign-up {
+                transform: translateX(0); /* Sign-up slides into view */
+            }
+
+            /* Hide the desktop sliding overlay on mobile */
+            .toggle-container {
+                display: none;
+            }
+
+            /* 🌟 NEW: Show mobile toggle links */
+            .mobile-toggle {
+                display: block;
+            }
+
+            /* ---------------------------------------------------- */
+            /* START: MOBILE ADJUSTMENTS for .menu-icon/navbar      */
+            /* ---------------------------------------------------- */
+
+            /* Show the menu icon on mobile screens (max-width: 767px) */
+            .menu-icon {
+                display: flex;
+            }
+
+            /* 🎯 NEW Mobile Menu Styling */
+            .navbar {
+                position: absolute;
+                top: 80px; /* Adjust based on header height */
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                display: none; /* Initially hide the menu */
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease-in-out;
+                z-index: 999;
+            }
+
+            /* Style for active mobile menu */
+            .navbar.active {
+                display: flex;
+            }
+            
+            .navbar a {
+                color: white;
+                margin: 10px 0;
+                padding: 10px 20px;
+                width: 90%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            /* Optional: Adjust header container for better mobile layout */
+            .nav {
+                /* Assuming .nav is a flex container for logo and nav-icons/navbar */
+                justify-content: space-between;
+                padding: 0 20px; /* Add padding to the nav container */
+            }
+
+            /* ---------------------------------------------------- */
+            /* END: MOBILE ADJUSTMENTS for .menu-icon/navbar        */
+            /* ---------------------------------------------------- */
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <video autoplay muted loop id="bg-video">
+        <source src="CarAnimation.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <header>
+        <div class="nav full-width">
+            <a href="home.html" class="logo"><span>WND</span> Car Rentals</a>
+            <div class="navbar">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#fleets" class="nav-link">Rent a Car</a>
+                <a href="login.html" class="nav-link active">Sign In / Sign Up</a>
+                <a href="contact.html" class="nav-link">Contact / Support</a>
+                <a href="index.html#reviews" class="nav-link">Reviews</a>
+            </div>
+            <div class="nav-icons">
+                <a href="#" class="user-icon">
+                    <img src="Mainlogo.png" alt="logo">
+                </a>
+                <div class="menu-icon">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-wrapper">
+        <div class="container" id="container">
+            <div class="form-container sign-up">
+                <form id="signUpForm">
+                    <h1>Sign Up</h1>
+                    <div class="social-icons">
+                        <a href="#" class="icon"><i class="fa-brands fa-google"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                    <span>or use your email for registration</span>
+                    <input type="text" id="signUpName" placeholder="Name" required>
+                    <input type="email" id="signUpEmail" placeholder="Email" required>
+                    <input type="password" id="signUpPassword" placeholder="Password" required>
+                    <button id="signUpBtn" type="submit">Sign Up</button>
+                    <a href="#" id="mobileLoginLink" class="mobile-toggle">Already have an account? Sign In</a>
+                </form>
+            </div>
+
+            <div class="form-container sign-in">
+                <form id="signInForm">
+                    <h1>Sign In</h1>
+                    <div class="social-icons">
+                        <a href="#" class="icon"><i class="fa-brands fa-google"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                    <span>or use your email password</span>
+                    <input type="email" id="signInEmail" placeholder="Email" required>
+                    <input type="password" id="signInPassword" placeholder="Password" required>
+                    <a href="#">Forgot Your Password?</a>
+                    <button id="signInBtn" type="submit">Sign In</button>
+                    <a href="#" id="mobileRegisterLink" class="mobile-toggle">Don't have an account? Sign Up</a>
+                </form>
+            </div>
+
+            <div class="toggle-container">
+                <div class="toggle">
+                    <div class="toggle-panel toggle-left">
+                        <h1>Welcome Back!</h1>
+                        <p>Enter your personal details to use all of the site features</p>
+                        <button class="hidden" id="login">Sign In</button>
+                    </div>
+                    <div class="toggle-panel toggle-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Register with your personal details to use all of the site features</p>
+                        <button class="hidden" id="register">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    const container = document.getElementById('container');
+    
+    // Desktop toggle buttons
+    const registerBtn = document.getElementById('register');
+    const loginBtn = document.getElementById('login');
+
+    // ✨ NEW: Mobile toggle links
+    const mobileRegisterLink = document.getElementById('mobileRegisterLink');
+    const mobileLoginLink = document.getElementById('mobileLoginLink');
+
+    const signInForm = document.getElementById('signInForm');
+    const signUpForm = document.getElementById('signUpForm');
+
+    // --- Panel Toggling Logic ---
+
+    // Desktop listeners
+    registerBtn?.addEventListener('click', () => {
+        container.classList.add("active");
+    });
+
+    loginBtn?.addEventListener('click', () => {
+        container.classList.remove("active");
+    });
+    
+    // ✨ NEW: Mobile listeners
+    mobileRegisterLink?.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent page from jumping
+        container.classList.add("active");
+    });
+
+    mobileLoginLink?.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent page from jumping
+        container.classList.remove("active");
+    });
+    
+    // --- Form Submission & Validation Logic ---
+
+    // Sign-In form validation
+    signInForm?.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting the traditional way
+
+        const email = document.getElementById('signInEmail').value;
+        const password = document.getElementById('signInPassword').value;
+
+        if (email.trim() === '' || password.trim() === '') {
+            alert('Please fill in both email and password.');
+        } else {
+            // If validation passes, proceed to the home page
+            console.log('Sign-in successful!');
+            window.location.href = "index.html";
+        }
+    });
+
+    // Sign-Up form validation
+    signUpForm?.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting the traditional way
+
+        const name = document.getElementById('signUpName').value;
+        const email = document.getElementById('signUpEmail').value;
+        const password = document.getElementById('signUpPassword').value;
+
+        if (name.trim() === '' || email.trim() === '' || password.trim() === '') {
+            alert('Please fill in all the required fields to sign up.');
+        } else {
+            // If validation passes, proceed to the home page
+            console.log('Sign-up successful!');
+            window.location.href = "index.html";
+        }
+        
+    });
+
+    // ----------------------------------------------------
+    // START: ADDED JAVASCRIPT for Mobile Menu Functionality
+    // ----------------------------------------------------
+    const menuIcon = document.querySelector('.menu-icon');
+    const navbar = document.querySelector('.navbar');
+
+    if (menuIcon && navbar) {
+        // 1. Toggle Menu on Click
+        menuIcon.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+            // Optional: Animate hamburger icon to 'X' (CSS-only solution is better, but adding for completeness)
+            menuIcon.classList.toggle('open'); 
+        });
+
+        // 2. Hide Menu on Scroll (Only for mobile view)
+        window.addEventListener('scroll', () => {
+            // Check if the screen width is mobile size (based on your CSS media query 767px)
+            if (window.innerWidth <= 767) {
+                // Check if the menu is currently active and the user has scrolled significantly
+                // We check for a scroll value greater than 50px to prevent closure on slight scrolls.
+                if (navbar.classList.contains('active') && window.scrollY > 50) {
+                    navbar.classList.remove('active');
+                    menuIcon.classList.remove('open');
+                }
+            }
+        });
+    }
+    // ----------------------------------------------------
+    // END: ADDED JAVASCRIPT for Mobile Menu Functionality
+    // ----------------------------------------------------
+    </script>
+
+</body>
+
+</html>

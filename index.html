@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WND - Luxury Car Rentals and Buy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <div class="nav full-width">
+            <a href="#" class="logo"><span>WND</span> Car Rentals</a>
+            <div class="navbar">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#fleets" class="nav-link">Rent a Car</a>
+                <a href="login.html" class="nav-link">Sign In / Sign Up</a>
+                <a href="contact.html" class="nav-link">Contact / Support</a>
+                <a href="#reviews" class="nav-link">Reviews</a>
+            </div>
+            <div class="nav-icons">
+                <a href="#" class="user-icon">
+                    <img src="Mainlogo.png" alt="logo">
+                </a>
+
+                <div class="menu-icon">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-content container">
+            <div class="taycan-text">
+                <h1>WHEEL <span style="font-family:impact; color:rgba(0, 0, 0, 0.906)">N</span> DEAL</h1>
+            </div>
+            <div class="home-img">
+                <img src="carMain.png" alt="Luxury Car">
+            </div>
+            <p class="para">Experience premium car rentals with Wheel N Deal (WND) — book in one click, enjoy a
+                first-time bonus, and
+                pay with no minimum commitment,and unmatched convenience for every journey.
+            </p>
+            
+        </div>
+    </section>
+
+    <section class="header__form">
+        <form action="/">
+            <div class="input__group">
+                <label for="location">Pick Up & Return location</label>
+                <div class="custom-select">
+                    <select name="location" id="location">
+                        <option value="" disabled selected>Select a location</option>
+                        <option value="mumbai">Mumbai</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="bangalore">Bangalore</option>
+                        <option value="hyderabad">Hyderabad</option>
+                        <option value="chennai">Chennai</option>
+                        <option value="kolkata">Kolkata</option>
+                        <option value="pune">Pune</option>
+                        <option value="ahmedabad">Ahmedabad</option>
+                        <option value="jaipur">Jaipur</option>
+                        <option value="lucknow">Lucknow</option>
+                    </select>
+                    <div class="select-arrow">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="input__group">
+                <label for="start">Pick up date</label>
+                <input type="date"
+                name="start"
+                id="start"
+                placeholder="Date">
+            </div>
+            <div class="input__group">
+                <label for="return">Return date</label>
+                <input type="date"
+                name="return"
+                id="return"
+                placeholder="Date">
+            </div>
+            <button class="btn">Search</button>
+        </form>
+    </section>
+
+     <section class="section__container about__container" id="about">
+      <h2 class="section__header">How it work</h2>
+      <p class="section__description">
+        Renting a car with us is simple! Choose your vehicle, pick your dates,
+        and complete your booking. We'll handle the rest, ensuring a smooth
+        start to your journey.
+      </p>
+      <div class="about__grid">
+        <div class="about__card">
+          <span><i class="ri-map-pin-2-fill"></i></span>
+          <h4>Choose Location</h4>
+          <p>
+            Select from a variety of pick-up locations that best suit your
+            needs, whether it's close to home, work, or airport.
+          </p>
+        </div>
+        <div class="about__card">
+          <span><i class="ri-calendar-event-fill"></i></span>
+          <h4>Pick-up Date</h4>
+          <p>
+            Choose the exact date and time for your car pick-up, ensuring that
+            your vehicle is ready when you need it.
+          </p>
+        </div>
+        <div class="about__card">
+          <span><i class="ri-roadster-fill"></i></span>
+          <h4>Book your Car</h4>
+          <p>
+            Complete your booking with just a few clicks, and we'll prepare your
+            vehicle to ensure a hassle-free pick-up.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section__container location__container">
+      <div class="location__image">
+        <img src="route.jpg" alt="location" />
+      </div>
+      <div class="location__content">
+        <h2 class="section__header">FIND CAR IN YOUR LOCATIONS</h2>
+        <p>
+          Discover the perfect vehicle tailored to your needs, wherever you are.
+          Our 'Find Car in Your Locations' feature allows you to effortlessly
+          search and select from our premium fleet available near you. Whether
+          you're looking for a luxury sedan, a spacious SUV, or a sporty
+          convertible, our easy-to-use tool ensures you find the ideal car for
+          your journey. Simply enter your location, and let us connect you with
+          top-tier vehicles ready for rental.
+        </p>
+      </div>
+    </section>
+        <!-- Popular Fleets Section -->
+    <section class="section__container fleet__container" id="fleets">
+      <h2 class="section__header">Popular Fleets</h2>
+      <p class="section__description">
+        Choose from our premium collection of luxury vehicles — style, comfort, and performance for every occasion.
+      </p>
+
+      <section class="section__container fleet__container" id="fleet">
+  <h2 class="section__header">Luxurious Cars</h2>
+  <div class="fleet__grid">
+
+    <div class="fleet__card">
+      <img src="rolls_royse.png" alt="Rolls Royce Phantom">
+      <h4>Rolls Royce Phanthom</h4>
+      <p>Luxury sedan with ultimate comfort and power.</p>
+      <div class="fleet__details">
+        <span><i class="fa-solid fa-users"></i> 4 Seats</span>
+        <span><i class="fa-solid fa-gas-pump"></i> Petrol</span>
+        <span><i class="fa-solid fa-gear"></i> Automatic</span>
+        <span><i class="fa-solid fa-indian-rupee-sign"></i> 85,000 /day</span>
+      </div>
+      <button class="fleet__btn">Book Now</button>
+    </div>
+
+    <div class="fleet__card">
+      <img src="Mercedes Benz S-Class.jpeg" alt="BMW 7 Series">
+      <h4>Mercedes Benz S-Class</h4>
+      <p>Elegance meets innovation — drive the future of luxury.</p>
+      <div class="fleet__details">
+        <span><i class="fa-solid fa-users"></i> 4 Seats</span>
+        <span><i class="fa-solid fa-gas-pump"></i> Diesel</span>
+        <span><i class="fa-solid fa-gear"></i> Automatic</span>
+        <span><i class="fa-solid fa-indian-rupee-sign"></i> 70,000 /day</span>
+      </div>
+      <button class="fleet__btn">Book Now</button>
+    </div>
+
+    <div class="fleet__card">
+      <img src="Bentley.png" alt="Audi A8">
+      <h4>Bentley</h4>
+      <p>Performance, technology, and sophistication in one ride.</p>
+      <div class="fleet__details">
+        <span><i class="fa-solid fa-users"></i> 4 Seats</span>
+        <span><i class="fa-solid fa-gas-pump"></i> Petrol</span>
+        <span><i class="fa-solid fa-gear"></i> Automatic</span>
+        <span><i class="fa-solid fa-indian-rupee-sign"></i> 50,000 /day</span>
+      </div>
+      <button class="fleet__btn">Book Now</button>
+    </div>
+   </div>
+   </section>
+   <section class="section__container fleet__container" id="fleet">
+  <h2 class="section__header">Sports Cars</h2>
+  <div class="fleet__grid">
+    <div class="fleet__card">
+      <img src="Lambo.png" alt="Range Rover Vogue">
+      <h4>Lamborghini</h4>
+      <p>Unmatched power and comfort for long drives.</p>
+      <div class="fleet__details">
+        <span><i class="fa-solid fa-users"></i> 5 Seats</span>
+        <span><i class="fa-solid fa-gas-pump"></i> Diesel</span>
+        <span><i class="fa-solid fa-gear"></i> Automatic</span>
+        <span><i class="fa-solid fa-indian-rupee-sign"></i> 92,000 /day</span>
+      </div>
+      <button class="fleet__btn">Book Now</button>
+    </div>
+
+    <div class="fleet__card">
+      <img src="Pagani.png" alt="Pagani Huarya">
+      <h4>Pagani Huarya</h4>
+      <p>All-electric performance redefined with style.</p>
+      <div class="fleet__details">
+        <span><i class="fa-solid fa-users"></i> 4 Seats</span>
+        <span><i class="fa-solid fa-bolt"></i> Electric</span>
+        <span><i class="fa-solid fa-gear"></i> Automatic</span>
+        <span><i class="fa-solid fa-indian-rupee-sign"></i> 1,15,000 /day</span>
+      </div>
+      <button class="fleet__btn">Book Now</button>
+    </div>
+
+    <div class="fleet__card">
+      <img src="Ferrari.png" alt="Ferrari 458">
+      <h4>Ferrari 458</h4>
+      <p>Exhilarating speed and flawless design for thrill seekers.</p>
+      <div class="fleet__details">
+        <span><i class="fa-solid fa-users"></i> 2 Seats</span>
+        <span><i class="fa-solid fa-gas-pump"></i> Petrol</span>
+        <span><i class="fa-solid fa-gear"></i> Automatic</span>
+        <span><i class="fa-solid fa-indian-rupee-sign"></i> 1,00,000 /day</span>
+      </div>
+      <button class="fleet__btn">Book Now</button>
+    </div>
+  </div>
+</section>
+
+ <section class="section__container fleet__container" id="fleet">
+  <h2 class="section__header">SUV Cars</h2>
+  <div class="fleet__grid">
+    <div class="fleet__card">
+      <img src="RangeRover.png" alt="Range Rover Vogue">
+      <h4>Range Rover Vogue</h4>
+      <p>Unmatched power and comfort for long drives.</p>
+      <div class="fleet__details">
+        <span><i class="fa-solid fa-users"></i> 5 Seats</span>
+        <span><i class="fa-solid fa-gas-pump"></i> Diesel</span>
+        <span><i class="fa-solid fa-gear"></i> Automatic</span>
+        <span><i class="fa-solid fa-indian-rupee-sign"></i> 30,000 /day</span>
+      </div>
+      <button class="fleet__btn">Book Now</button>
+    </div>
+
+    <div class="fleet__card">
+      <img src="G-Wagon.png" alt="Porsche Taycan">
+      <h4>G-Wagon</h4>
+      <p>All-electric performance redefined with style.</p>
+      <div class="fleet__details">
+        <span><i class="fa-solid fa-users"></i> 4 Seats</span>
+        <span><i class="fa-solid fa-bolt"></i> Electric</span>
+        <span><i class="fa-solid fa-gear"></i> Automatic</span>
+        <span><i class="fa-solid fa-indian-rupee-sign"></i> 50,000 /day</span>
+      </div>
+      <button class="fleet__btn">Book Now</button>
+    </div>
+
+    <div class="fleet__card">
+      <img src="Kia-Seltos.png" alt="Lamborghini Huracán">
+      <h4>KIA-SELTOS</h4>
+      <p>Exhilarating speed and flawless design for thrill seekers.</p>
+      <div class="fleet__details">
+        <span><i class="fa-solid fa-users"></i> 2 Seats</span>
+        <span><i class="fa-solid fa-gas-pump"></i> Petrol</span>
+        <span><i class="fa-solid fa-gear"></i> Automatic</span>
+        <span><i class="fa-solid fa-indian-rupee-sign"></i> 15,000 /day</span>
+      </div>
+      <button class="fleet__btn">Book Now</button>
+    </div>
+
+  </div>
+</section>
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="heading">
+                <h2>Customers Reviews</h2>
+            </div>
+            <div class="reviews-content">
+                <div class="review-box">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>Fantastic service from start to finish! The car was clean, comfortable, and ready on time. The
+                        staff was friendly and helpful, and the prices were very reasonable. Highly recommend this
+                        company!</p>
+                    <div class="profile">
+                        <img src="roshan.png" alt="Roshan">
+                        <div class="profile-data">
+                            <h3>Roshan Gowda</h3>
+                            <span>UAE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-box">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>Exceptional experience from beginning to end! The team was professional and welcoming, and
+                        everything was perfectly organized. The vehicle was spotless, cozy, and arrived right on
+                        schedule.</p>
+                    <div class="profile">
+                        <img src="suraj.png" alt="Suraj">
+                        <div class="profile-data">
+                            <h3>Suraj Gowda</h3>
+                            <span>India</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-box">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>Couldn't have asked for better service! The team was prompt, polite, and incredibly helpful. The
+                        car was clean and well-maintained, and the whole experience felt premium without the premium
+                        price tag.</p>
+                    <div class="profile">
+                        <img src="tushar.png" alt="Tushar">
+                        <div class="profile-data">
+                            <h3>Tushar</h3>
+                            <span>Japan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-box">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>Truly outstanding! From the moment I booked, everything was seamless. The staff went above and
+                        beyond to make sure I was comfortable. The car was spotless and the ride was smooth. I'll
+                        definitely be coming back!</p>
+                    <div class="profile">
+                        <img src="raghavendra.png" alt="Raghavendra">
+                        <div class="profile-data">
+                            <h3>Raghavendra</h3>
+                            <span>Bangladesh</span>
+                        </div>
+                    </div>
+                </div>  
+                <div class="reviews-content">
+                <div class="review-box">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>Fantastic service from start to finish! The car was clean, comfortable, and ready on time. The
+                        staff was friendly and helpful, and the prices were very reasonable. Highly recommend this
+                        company!</p>
+                    <div class="profile">
+                        <img src="ramcharan.png" alt="RamCharan">
+                        <div class="profile-data">
+                            <h3>Kunda Ramcharan</h3>
+                            <span>England</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>WND Car Rentals</h3>
+                    <p>Experience luxury and convenience with our premium car rental services. Book your dream car today!</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Luxury Lane, Premium City</p>
+                    <p><i class="fas fa-phone"></i> +1 234 567 8900</p>
+                    <p><i class="fas fa-envelope"></i> info@wndrentals.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+   
+    <script src="main.js"></script>
+
+</body>
+
+</html>

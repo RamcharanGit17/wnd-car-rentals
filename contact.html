@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Support | Wheel N Deal Car Rentals</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* NOTE: The original navigation styles are no longer needed, but the rest of the page styles are kept. */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --secondary: #1A1A2E; /* Dark color for text */
+            --light: #F4F7FC;   /* Light background color */
+            --gray: #6C757D;
+            --success: #28A745;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffffff 0%, #f4f7fc 100%);
+            color: var(--secondary);
+            min-height: 100vh;
+            line-height: 1.6;
+            font-family: var(--font-family);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Main Content Animation */
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            padding-top: 100px; /* Added padding to prevent content from hiding behind the fixed header */
+        }
+        
+        .contact-card, .support-form {
+            animation: fadeInSlideUp 0.8s ease-out forwards;
+        }
+
+        .support-form {
+            animation-delay: 0.2s; /* Stagger the animation */
+        }
+
+        /* Modern Card Style */
+        .modern-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 35px;
+            border: 1px solid #eef2f9;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.07);
+        }
+
+        .modern-card h2 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+        }
+
+        .contact-card p {
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 12px;
+            transition: background 0.3s ease;
+        }
+
+        .contact-method:hover {
+            background: #f8f9fa;
+        }
+
+        .contact-icon {
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+            background: rgba(255, 107, 53, 0.1);
+            transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease;
+        }
+        
+        .contact-method:hover .contact-icon {
+            transform: scale(1.1);
+            color: white;
+            background: var(--primary);
+        }
+
+        .contact-details h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--secondary);
+        }
+
+        .contact-details a, .contact-details p {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-details a:hover {
+            color: var(--primary);
+        }
+        
+        /* Support Form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            background: #f8f9fa;
+            border: 1px solid #dde2e7;
+            border-radius: 10px;
+            font-size: 16px;
+            color: var(--secondary);
+            transition: all 0.3s ease;
+            font-family: var(--font-family);
+        }
+        
+        select option {
+            background: #ffffff;
+            color: var(--secondary);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #999;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            background: #e55a2b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Status Message */
+        .status-message {
+            display: none; 
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .status-message.success {
+            background: rgba(40, 167, 69, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(40, 167, 69, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 40px;
+            border-top: 1px solid #e0e6f1;
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 15px; }
+            .modern-card { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header style="background-color: black;">
+        <div class="nav full-width">
+            <a href="home.html" class="logo"><span>WND</span> Car Rentals</a>
+            <div class="navbar">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#fleets" class="nav-link">Rent a Car</a>
+                <a href="login.html" class="nav-link">Sign In / Sign Up</a>
+                <a href="contact.html" class="nav-link active">Contact / Support</a>
+                <a href="index.html#reviews" class="nav-link">Reviews</a>
+            </div>
+            <div class="nav-icons">
+                <a href="#" class="user-icon">
+                    <img src="Mainlogo.png" alt="logo">
+                </a>
+
+                <div class="menu-icon">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main class="main-content">
+            <div class="contact-card modern-card">
+                <h2>Get in Touch</h2>
+                <p>Our team is ready to assist with any booking, vehicle, or service inquiries.</p>
+
+                <div class="contact-method">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div class="contact-details">
+                        <h3>Call Us</h3>
+                        <a href="tel:+18005550199">+1 (800) 555-0199</a>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-details">
+                        <h3>Email Support</h3>
+                        <a href="mailto:support@wheelndeal.com">support@wheelndeal.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-details">
+                        <h3>Our Headquarters</h3>
+                        <p>123 Car Rental Avenue, Suite 500, City, State 90210</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="support-form modern-card">
+                <h2>Send a Support Request</h2>
+                <form id="supportForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required placeholder="you@example.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="" disabled selected>Select a subject...</option>
+                            <option value="booking">Booking/Reservation Inquiry</option>
+                            <option value="vehicle">Vehicle Issue/Feedback</option>
+                            <option value="billing">Billing/Payment Question</option>
+                            <option value="general">General Support</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required placeholder="Describe your issue or question..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Submit Request
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                    
+                    <div id="statusMessage" class="status-message"></div>
+                </form>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Wheel N Deal Car Rentals. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    
+
+</body> 
+</html>
